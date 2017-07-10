@@ -65,7 +65,7 @@ describe ('Manage User Page', () => {
         username: 'abc',
         firstName: 'Micah',
         lastName: 'Netz',
-        email: 'mnetz@2ndwatch.com'
+        email: 'micah.netz@example.com'
       }
     };
     const wrapper = mount(<ManageUser {...props} />);
