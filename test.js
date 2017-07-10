@@ -31,21 +31,24 @@ import { render, shallow } from 'enzyme';
 import { Header } from './Header';
  
 describe('Header', () => {
-  it('contains 2 Links via shallow', () => {
+
+  it('Contains 2 Links via shallow', () => {
     const shallowHeader = shallow(<Header isLoggedIn={false} />);
     expect(shallowHeader).find('Link')).to.have.length(1);
   });
  
-  it('contains 3 anchors via render', () => {
+  it('Contains 3 anchors via render', () => {
     const renderHeader = render(<Header isLoggedIn={false} />);
     expect(renderHeader).find('a')).to.have.length(3);
   });
  
-  it('contains no links with active class by default', () => {
+  it('Contains no links with active class by default', () => {
     const shallowHeader = shallow(<Header isLoggedIn={false} />);
     expect(shallowHeader).find('.active')).to.have.length(0);
   });
+
 });
+//End of ComponentTest.tsx
 */
 
 //ContainerTest.tsx
@@ -57,6 +60,7 @@ import { mount } from 'enzyme';
 import { ManageUser } from './ManageUser';
  
 describe ('Manage User Page', () => {
+
   it('sets error message on short username', () => {
     const props = {
       actions: { saveUser: () => { return Promise.resolve(); }},
@@ -74,7 +78,9 @@ describe ('Manage User Page', () => {
     saveButton.simulate('click');
     expect(wrapper.state().errors.title).toBe('Username must be at least 5 characters.');
   });
+
 });
+//End of ContainerTest.tsx
 */
 
 //ActionsTest.tsx
@@ -84,13 +90,14 @@ import { expect } from 'chai';
 import {} from 'mocha';
  
 // Test
-import { getMockUserProfile } from '__tests/utils/users';
+import { getMockUserProfile } from '__tests/example_folder';
  
 // App
 import * as types from '../actionTypes';
 import * as userActions from '../actions';
  
 describe('redux actions - users', () => {
+
   const username = 'Test Username';
   const profile = getMockUserProfile();
  
@@ -111,7 +118,9 @@ describe('redux actions - users', () => {
     };
     expect(userActions.userLoginError(err, username)).to.deep.equal(expectedAction);
   });
+
 });
+//End of ActionsTest.tsx
 */
 
 //ReducerTest.tsx
@@ -121,13 +130,14 @@ import { expect } from 'chai';
 import {} from 'mocha';
  
 // Test
-import { getMockUserProfile } from '__tests/utils/users';
+import { getMockUserProfile } from '__tests/example_folder';
  
 // App
 import { IUserState, userReducer } from '..';
 import * as types from '../actionTypes';
  
 describe('redux reducers - users', () => {
+
   const profile = getMockUserProfile();
   let initialUserState: IUserState;
  
@@ -150,5 +160,7 @@ describe('redux reducers - users', () => {
     expect(userReducer(initialUserState, { type: types.LOGIN })).to.deep.equal(returnState);
     expect(initialUserState.isLoggingIn, 'initial state should not be mutated').to.be.false;
   });
+  
 });
+//End of ReducerTest.tsx
 */
